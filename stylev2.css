@@ -1,0 +1,414 @@
+
+/* New Dark Night Blue Theme CSS */
+
+/* Global Styles */
+body {
+    font-family: sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #051276; /* Dark Night Blue text color for paragraphs */
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #051276; /* Dark Night Blue link color */
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #cd2345; /* Brighter red on hover */
+}
+
+/* Header Styles */
+header {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    text-align: center;
+    background-color: #ffffff; /* White background */
+}
+
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    transition: background 0.5s ease-in-out;
+}
+
+header .overlay h1 {
+    font-size: 3em;
+    margin: 0.5em 0;
+    color: #cd2345; /* Red color for h1 */
+    transition: transform 0.5s ease-in-out;
+}
+
+header .overlay p {
+    font-size: 1.2em;
+    color: #eeecec; /* Light text color */
+    transition: transform 0.5s ease-in-out;
+}
+
+header .overlay .nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #051276; /* Dark Night Blue background */
+    color: #eeecec; /* Light text color */
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+header .overlay .nav-button:hover {
+    background-color: #051276; /* White background on hover */
+    color: #ffffff; /* Dark Night Blue text color on hover */
+    transform: scale(1.1);
+}
+
+/* Section Styles */
+.about-us, .sign-up-now {
+    padding: 50px 20px;
+    background-color: #ffffff; /* White background */
+    color: #051276; /* Dark Night Blue text color */
+    margin: 20px auto;
+    width: 80%;
+    box-sizing: border-box;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.about-us:hover, .sign-up-now:hover {
+    transform: scale(1.02);
+    background-color: #eeecec; /* Light background on hover */
+     border-radius: 15px;
+    margin: 10px auto;
+}
+
+.about-us h2, .sign-up-now h2 {
+    text-align: center;
+    color: #cd2345; /* Red text color */
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 20px;
+    
+}
+
+.about-us h2::after, .sign-up-now h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #051276; /* Dark Night Blue underline */
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s;
+}
+
+.about-us h2:hover::after, .sign-up-now h2:hover::after {
+    width: 120%;
+}
+
+.about-us ul, .sign-up-now ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.about-us ul li, .sign-up-now ul li {
+    margin: 10px 0;
+    padding: 10px;
+    background: #eeecec; /* Light background */
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.about-us ul li:hover, .sign-up-now ul li:hover {
+    transform: scale(1.05);
+    background-color: #ffffff; /* Slightly darker background on hover */
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modern-button {
+    background-color: #051276; /* Dark Night Blue background */
+    color: #ffffff; /* Light text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.modern-button:hover {
+    background-color: #eeecec; /* White background on hover */
+    color: #051276; /* Dark Night Blue text color on hover */
+    transform: scale(1.1);
+}
+
+footer {
+    background: #ffffff; /* White background */
+    color: #051276; /* Dark Night Blue text color */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+footer p, footer a {
+    color: #051276; /* Dark Night Blue text color */
+    text-decoration: none;
+    margin: 0;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p.hidden-text {
+    display: none;
+}
+
+footer:hover p.hidden-text {
+    display: block;
+    color: #051276; /* Dark Night Blue text color */
+}
+
+@media (max-width: 768px) {
+    header .overlay h1 {
+        font-size: 2em;
+    }
+
+    header .overlay p {
+        font-size: 1em;
+    }
+
+    .about-us, .sign-up-now {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .about-us h2, .sign-up-now h2 {
+        font-size: 1.5em;
+    }
+
+    .about-us ul li, .sign-up-now ul li {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+.modern-button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 75px;
+  margin-right: 10px;
+  background-color: #051276; /* Star Yellow background */
+  color: #ffffff; /* Dark Night Blue text color */
+  border: 2px solid #051276; /* Star Yellow border */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+
+}
+
+
+.modern-button:hover {
+  background-color: #fdfcfc; /* Dark Night Blue background on hover */
+  color: #051276; /* Star Yellow text color on hover */
+}
+/* Navigation Button Styles */
+.nav-button {
+  margin-right: 10px; /* Add spacing between the buttons */
+  padding: 8px 16px; /* Padding for the buttons */
+  text-align: center;
+  text-decoration: none;
+  background-color: #051276; /* Star Yellow background */
+  color: #eeecec; /* Dark Night Blue text color */
+  border: 2px solid #051276; /* Star Yellow border */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 14px; /* Font size */
+}
+
+.nav-button:hover {
+  background-color: #ffffff; /* Dark Night Blue background on hover */
+  color: #051276; /* Star Yellow text color on hover */
+}
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #051276;
+}
+
+a {
+    color: #051276;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #cd2345;
+}
+
+nav {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #ffffff;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #051276;
+    color: #ffffff;
+    margin: 0 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: #ffffff;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+header h1 {
+    color: #cd2345;
+    font-size: 36px;
+}
+
+main {
+    padding: 20px;
+}
+
+h2, h3 {
+    color: #cd2345;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+ul li b a {
+    color: #051276;
+}
+
+ul li b a:hover {
+    color: #051276;
+}
+
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.modern-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #051276;
+    color: #ffffff;
+    border: 2px solid #051276;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.modern-button:hover {
+    background-color: #f3f3f3;
+    color: #051276;
+}
+
+.yellow-email {
+    color: #cd2345;
+}
+
+.hidden-text {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #051276;
+}
+
+footer a {
+    color: #051276;
+}
+
+footer a:hover {
+    color: #cd2345;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.solid-background {
+    background-color: #ffffff; /* Dark Night Blue background */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+body, html {
+    overflow-x: hidden;
+}

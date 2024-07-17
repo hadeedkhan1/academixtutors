@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Academix Tutors Client Login Portal</title>
+     <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="stylev2.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #051276;
+        }
+
+        a {
+            color: #051276;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #cd2345;
+        }
+
+        nav {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #051276;
+            color: #ffffff;
+            margin: 0 10px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .nav-button:hover {
+            background-color: #f9f9f9;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #cd2345;
+        }
+
+        #password {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #051276;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ffffff;
+            color: #051276;
+        }
+
+        #message {
+            text-align: center;
+            color: #cd2345;
+        }
+
+        .yellow-email {
+            color: #cd2345;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-button" href="index.html">Home</a>
+        <a class="nav-button" href="contact.html">Contact Us Today!</a>
+        <a class="nav-button" href="resources.html">Free Resources</a>
+    </nav>
+
+    <div class="login-container">
+        <h2>Password Required</h2>
+        <form id="loginForm">
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <p>Forgot Password? Please email customer support: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
+</body>
+</html>
+<script src="script.js"></script>

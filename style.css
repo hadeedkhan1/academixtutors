@@ -1,0 +1,317 @@
+/* New Dark Night Blue Theme CSS */
+
+/* Global Styles */
+body {
+  font-family: sans-serif;
+  background-color: #ffffff; /* Dark Night Blue background */
+  color: #051276; /* White text color for paragraphs */
+}
+
+a {
+  color: #051276; /* Star Yellow link color */
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+}
+
+a:hover {
+  color: #cd2345; /* Brighter Star Yellow on hover */
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffffff; /* Dark Night Blue background */
+  color: #051276; /* Star Yellow text color for headers */
+}
+
+header img {
+  width: 200px;
+  border-radius: 50%;
+}
+
+header h1 {
+  font-size: 50px;
+  color: #cd2345; /* Star Yellow color for h1 */
+  padding-top: 200px;
+  padding-bottom: 20px;
+
+}
+
+header h2 {
+  align-content: left;
+  color: #cd2345; /* Star Yellow color for h2 */
+  padding-top: 200px;
+}
+
+header h3 {
+  align-content: left;
+  color: #cd2345; /* Star Yellow color for h2 */
+  padding-top: 200px;
+}
+
+/* Navigation Styles */
+nav {
+  float: right;
+  margin-top: 20px;
+}
+
+/* Navigation Styles */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #cd2345; /* Star Yellow text color */
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #cd2345; /* Brighter Star Yellow on hover */
+}
+
+/* Add this style for a modern button appearance */
+nav a {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #ffffff; /* Dark Night Blue background */
+  transition: background-color 0.3s ease-in-out; /* Smooth background color transition on hover */
+}
+
+nav a:hover {
+  background-color: #ffffff; /* Slightly darker background on hover */
+}
+
+
+nav a:hover {
+  background-color: #ffffff; /* Slightly brighter Dark Gray on hover */
+}
+/* Default styles for larger screens */
+nav {
+  float: right;
+  margin-top: 20px;
+}
+
+nav a {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #ffffff; /* Dark Gray background */
+  color: #051276; /* Star Yellow text color */
+}
+
+nav a:hover {
+  background-color: #ffffff; /* Slightly brighter Dark Gray on hover */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  nav {
+    float: none;
+    text-align: center; /* Center the links */
+  }
+
+  nav a {
+    display: block; /* Display each link on a new line */
+    margin: 10px 0;
+  }
+}
+
+
+/* Slideshow Styles */
+.slideshow {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide caption {
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #051276; /* White text color for captions */
+}
+
+/* About Us and Meet the Team Styles (you can further customize these styles) */
+.about-us, .meet-the-team {
+  padding: 20px;
+  background-color: #ffffff; /* Dark Night Blue background */
+  color: #051276; /* White text color for paragraphs */
+
+  /* Apply styles to h1 and p within these sections */
+}
+
+h1, h2, h3 {
+  color: #cd2345; /* Yellow header text color */
+  font-size: 30px; /* Adjust font size as needed */
+}
+
+.about-us p, .meet-the-team p {
+  color: #051276; /* White text color for paragraphs */
+  font-size: 20px; /* Adjust font size as needed */
+
+}
+
+/* Sign Up Now Styles */
+.sign-up-now {
+  padding: 20px;
+  background-color: #ffffff; /* Dark Gray background */
+  color: #051276; /* Star Yellow text color for sign-up content */
+
+}
+h1, h2, h3 {
+  color: #cd2345; /* Yellow header text color */
+  font-size: 30px; /* Adjust font size as needed */
+}
+
+.sign-up-now p, .meet-the-team p, ul {
+  color: #051276; /* White text color for paragraphs */
+  font-size: 20px; /* Adjust font size as needed */
+}
+
+.sign-up-now img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff; /* Dark Night Blue background */
+}
+/* Define a CSS class to make the text yellow */
+.yellow-email {
+  color: #051276; /* Yellow text color */
+}
+/* Modern Interactive Button Styles */
+.modern-button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 75px;
+  margin-right: 10px;
+  background-color: #051276; /* Star Yellow background */
+  color: #ffffff; /* Dark Night Blue text color */
+  border: 2px solid #051276; /* Star Yellow border */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+
+}
+
+
+.modern-button:hover {
+  background-color: #fdfcfc; /* Dark Night Blue background on hover */
+  color: #051276; /* Star Yellow text color on hover */
+}
+/* Navigation Button Styles */
+.nav-button {
+  margin-right: 10px; /* Add spacing between the buttons */
+  padding: 8px 16px; /* Padding for the buttons */
+  text-align: center;
+  text-decoration: none;
+  background-color: #051276; /* Star Yellow background */
+  color: #f2f2f2; /* Dark Night Blue text color */
+  border: 2px solid #051276; /* Star Yellow border */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 14px; /* Font size */
+}
+
+.nav-button:hover {
+  background-color: #ffffff; /* Dark Night Blue background on hover */
+  color: #051276; /* Star Yellow text color on hover */
+}
+h3{
+   color: #051276;
+  font-size: 24px;
+}
+
+#greenHeading{
+  color: #cd2345; /* Yellow header text color */
+  font-size: 30px; /* Adjust font size as needed */
+}
+/* Adjust the grid layout */
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  header img {
+    max-width: 150px; /* Reduce the maximum width of the logo for smaller screens */
+  }
+
+  header h1, header h2, header h3 {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-top: 50px; /* Add some spacing for smaller screens */
+  }
+
+  nav {
+    float: none;
+    text-align: center;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .about-us, .meet-the-team, .sign-up-now, footer {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  h1, h2, h3 {
+    font-size: 22px; /* Adjust font size for smaller screens */
+  }
+
+  .modern-button {
+    margin-bottom: 20px; /* Adjust spacing for smaller screens */
+  }
+  .spoiler{
+    background-color: gray;
+    color: transparent;
+    user-select: none;
+  }
+
+  .spoiler:hover{
+    background-color: inherit;
+    color: inherit;
+  }
+}
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
