@@ -450,3 +450,85 @@ body, html {
         margin-bottom: 10px;
     }
 }
+/* Header Styles */
+header {
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+    background-color: #051276;
+}
+
+header .background-image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url('path-to-your-background-image.jpg'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+}
+
+header .overlay {
+    position: relative;
+    padding: 20px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly dark overlay for text contrast */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem; /* Adjust font size for better mobile responsiveness */
+}
+
+header p {
+    margin: 10px 0;
+    font-size: 1rem; /* Adjust font size for better mobile responsiveness */
+}
+
+header a.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #cd2345;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header a.nav-button:hover {
+    background-color: #051276;
+}
+
+/* Responsive Styles for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 10px;
+        text-align: center;
+    }
+
+    header .background-image {
+        height: 200px; /* Adjust height for better fit on mobile */
+    }
+
+    header .overlay {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Smaller font size for mobile */
+    }
+
+    header p {
+        font-size: 0.875rem; /* Smaller font size for mobile */
+    }
+
+    header a.nav-button {
+        padding: 10px 15px;
+        font-size: 0.875rem; /* Adjust font size for mobile */
+    }
+}
