@@ -432,3 +432,19 @@ body, html {
     padding: 20px; /* Add some padding to ensure the content isn't too close to the edges */
     box-sizing: border-box; /* Ensures padding doesn't affect the overall width */
 }
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-button {
+        display: block;
+        width: 80%;
+        margin: 10px 0;
+        padding: 15px;
+        text-align: center;
+    }
+}
