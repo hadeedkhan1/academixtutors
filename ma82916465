@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal</title>
+    <link rel="stylesheet" href="styleclient.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+<body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQN0T437R6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JQN0T437R6');
+    </script>
+    <header>
+        <nav>
+            <a href="index.html">
+                <img src="logo.png" alt="Academix Logo" class="logo">
+            </a>
+            <a class="nav-button" href="index.html">Home</a>
+            <a class="nav-button" href="contact.html">Contact Us</a>
+        </nav>
+        <h1>Client Portal</h1>
+    </header>
+    <main class="tile-container">
+        <div class="tile">
+            <h2>Welcome, Edwin!</h2>
+            <p><strong>Tutor: Miles Fritzmather</strong></p>
+            <p>Contact: <a href="sms:+15124977423">(512) 497-7423</a></p>
+        </div>
+        <div class="tile">
+            <h2>Session Info</h2>
+            <p><strong>Program: AP Computer Science</strong></p>
+            <p>Classes Taken: 0</p>
+            <p>Classes Remaining: 0</p>
+            <p><b>Please contact us to refill on classes.</b></p>
+        </div>
+        <div class="tile">
+            <h2>Join Your Session</h2>
+            <p>Next Session: <strong>Saturday, 4:00PM Central</strong></p>
+            <p>Location: Online</p>
+            <p>Link: <a href="https://meet.google.com/ndf-iccw-qhi">meet.google.com/ndf-iccw-qhi</a></p>
+        </div>
+      <div class="tile">
+        <h2>Contact Support</h2>
+       
+        <p>Refill Classes, Request Resources or more</p>
+          <a href="mailto:contact@academixtutors.com" class="modern-button">Email Us</a>
+          <a href="sms:+17372556255" class="modern-button">Text Us</a>
+      </div>
+        <!-- Other tiles -->
+        <div class="tile wide-tile">
+            <h2>Calendar</h2>
+           <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&bgcolor=%23ffffff&showTitle=0&showPrint=0&showTabs=0&title=Marcus&src=MjQxZDIzMDYwYzhkYzkwM2JjZDRjOTBkNDY4MmEyZWZlMmYzMGYwZGQ3YjU2YWQ2N2RlMmRhOGRhNWNhYzU1NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23D81B60" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="tile wide-tile">
+            <h2>Your Resources</h2>
+            <p>No resources yet.</p>
+        </div>
+        <div class="tile wide-tile">
+            <h2>To-Do List</h2>
+            <p>Nothing to do yet!</p>
+        </div>
+  
+    <footer>
+        <p>2024 Academix Tutoring</p>
+        <p class="hidden-text">Affordable tutoring in Austin, Texas for all ages. In-person and online tutoring services
+            for students. Tutoring for all students at budget-friendly rates.</p>
+ 
+        <p>Contact Us: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
+    </footer>
+</body>
+    <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6643f3566c2c6e37b9e7874d' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+</html>
