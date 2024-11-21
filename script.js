@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     else if (password === "autumn1966") {
         window.location.href = "288866au0amgc631966.html"; // Redirect
     }
-    else if (password === "carter0366") {
+    else if (password === "kaila45") {
         window.location.href = "45670366902ca528.html"; // Redirect
     }
     else if (password === "marcus64") {
