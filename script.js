@@ -18,8 +18,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     else if (password === "kaila45") {
         window.location.href = "45670366902ca528.html"; // Redirect
     }
-    else if (password === "marcus64") {
-        window.location.href = "ma82916465.html"; // Redirect
+    else if (password === "jules60") {
+        window.location.href = "udy42602727ip35mich2934.html.html"; // Redirect
     }
     else {
         document.getElementById("message").innerHTML = "Incorrect password. Please try again.";
