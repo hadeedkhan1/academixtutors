@@ -9,6 +9,41 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
 </head>
+    <script>
+  // Replace with your Google Sheets CSV URL
+  const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQUSSnbTVVUxBWQijAtgRgw76yGq5PcRMgCQhk1kNw1K8TcrirNIV8EWK-yR2k4FHUVvwRa-CIDCY-l/pub?output=csv";
+
+  async function fetchSessionData() {
+    try {
+      const response = await fetch(sheetURL);
+      const data = await response.text();
+      
+      // Split CSV into rows
+      let rows = data.split("\n").map(row => row.split(","));
+      
+      // Adjust index based on your Google Sheets structure
+      let studentName = rows[12][2]; // Column A
+      let tutorName = rows[1][1];   // Column B
+      let program = rows[1][2];     // Column C
+      let totalSessions = rows[12][3]; // Column D
+      let remainingSessions = rows[12][4]; // Column E
+
+      // Update HTML elements
+      document.getElementById("studentName").innerText = studentName;
+      document.getElementById("tutorName").innerText = tutorName;
+      document.getElementById("program").innerText = program;
+      document.getElementById("totalSessions").innerText = totalSessions;
+      document.getElementById("remainingSessions").innerText = remainingSessions;
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  // Fetch data when the page loads
+  fetchSessionData();
+</script>
+
 <body>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQN0T437R6"></script>
@@ -37,13 +72,13 @@
             <p><strong>Tutor: Henry L</strong></p>
             <p>Contact: <a href="sms:+17372556255">(949) 538-7325</a></p>
         </div>
-        <div class="tile">
-            <h2>Session Info</h2>
-            <p><strong>Program: 9th Grade Biology (LASA)</strong></p>
-            <p>Classes Taken: 8</p>
-            <p>Classes Remaining: 6.5</p>
-            <p><b>Please contact us to refill on classes.</b></p>
-        </div>
+<div class="tile">
+    <h2>Session Info</h2>
+    <p><strong>Program: <span id="program">Loading...</span></strong></p>
+    <p>Classes Taken: <span id="totalSessions">Loading...</span></p>
+    <p>Classes Remaining: <span id="remainingSessions">Loading...</span></p>
+    <p><b>Please contact us to refill on classes.</b></p>
+</div>
         <div class="tile">
             <h2>Join Your Session</h2>
             <p>Next Session: <strong>Dec 7 | 12:30 PM Central</strong></p>
