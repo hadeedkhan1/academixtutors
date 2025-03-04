@@ -9,54 +9,42 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
 </head>
+    <script>
+  // Replace with your Google Sheets CSV URL
+<script>
+  // Replace with your Google Sheets CSV URL
+  fetch("https://docs.google.com/spreadsheets/d/e/1xs6KPOnNgGrR3nNGNJ_xU7yzNiiUFthbyLiWKFw3xJU/pub?output=csv")
+    .then(response => response.text())
+    .then(data => {
+      let rows = data.split("\n");
+      let headers = rows[0].split(",");  // K2:P2 will be used as the headers row
+      let values = rows[1].split(",");   // K3:P3 for student data
 
-   <script>
-        // URL of your Google Sheets CSV (replace with your actual link)
-        const sheetURL = "https://script.google.com/macros/s/AKfycbxPtlofTrdoohI7TI4BuR0Mm3W_VNlWAfZ0lyU9mL7s5X8f-we-hXn8vcztV8nQu2o/exec";
+      // Set the student's name, total sessions, and remaining sessions
+      document.getElementById("studentName").innerText = values[0]; // Kaila
+      document.getElementById("totalSessions").innerText = values[1]; // 8.5
+      document.getElementById("remainingSessions").innerText = values[2]; // 6
+    })
+    .catch(err => {
+      console.error("Error fetching CSV data:", err);
+      document.getElementById("studentName").innerText = "Error loading student data.";
+    });
+</script>
 
-        // Function to fetch and process the CSV data
-        async function fetchStudentData(studentName) {
-            try {
-                // Fetch the data
-                const response = await fetch(sheetURL);
-                const data = await response.text();
+</script>
 
-                // Split data into rows (CSV rows)
-                const rows = data.split('\n');
-
-                // Find the student row that matches the given name
-                for (let row of rows) {
-                    const columns = row.split(','); // Split row into columns
-                    if (columns[0].trim().toUpperCase() === studentName.toUpperCase()) {
-                        // Update the page with the student data
-                        document.getElementById("studentName").innerText = columns[0];
-                        document.getElementById("tutorName").innerText = columns[1];
-                        document.getElementById("program").innerText = columns[2];
-                        document.getElementById("totalSessions").innerText = columns[3];
-                        document.getElementById("remainingSessions").innerText = columns[4];
-                        return;
-                    }
-                }
-
-                // If student is not found
-                document.getElementById("studentName").innerText = "Student not found!";
-            } catch (error) {
-                console.error("Error fetching or parsing data:", error);
-            }
-        }
-
-        // Get student name from URL query parameters (e.g., ?student=KAILA)
-        const urlParams = new URLSearchParams(window.location.search);
-        const studentName = urlParams.get('student'); 
-
-        // If a student name is provided, fetch their data
-        if (studentName) {
-            fetchStudentData(studentName);
-        } else {
-            document.getElementById("studentName").innerText = "Student not specified.";
-        }
-    </script>
 <body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQN0T437R6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JQN0T437R6');
+    </script>
     <header>
         <nav>
             <a href="index.html">
@@ -69,34 +57,66 @@
     </header>
     <main class="tile-container">
         <div class="tile">
-            <h2 id="studentName">Loading...</h2> <!-- Dynamic student name -->
-            <p><strong>Tutor: <span id="tutorName">Loading...</span></strong></p>
+            <h2>Welcome, Kaila!</h2>
+            <p><strong>Tutor: Henry L</strong></p>
             <p>Contact: <a href="sms:+17372556255">(949) 538-7325</a></p>
         </div>
-        <div class="tile">
-            <h2>Session Info</h2>
-            <p><strong>Program: <span id="program">Loading...</span></strong></p>
-            <p>Classes Taken: <span id="totalSessions">Loading...</span></p>
-            <p>Classes Remaining: <span id="remainingSessions">Loading...</span></p>
-            <p><b>Please contact us to refill on classes.</b></p>
-        </div>
+<div class="tile">
+    <h2>Session Info</h2>
+    <p><strong>Program: <span id="program">Loading...</span></strong></p>
+    <p>Classes Taken: <span id="totalSessions">Loading...</span></p>
+    <p>Classes Remaining: <span id="remainingSessions">Loading...</span></p>
+    <p><b>Please contact us to refill on classes.</b></p>
+</div>
         <div class="tile">
             <h2>Join Your Session</h2>
             <p>Next Session: <strong>Dec 7 | 12:30 PM Central</strong></p>
             <p>Location: Online</p>
-            Join Session:  <a class="yellow-email" href="-----">-----</a>
+             Join Session:  <a class="yellow-email" href="-----">-----</a>
         </div>
-        <div class="tile">
-            <h2>Contact Support</h2>
-            <p>Refill Classes, Request Resources or more</p>
-            <a href="mailto:contact@academixtutors.com" class="modern-button">Email Us</a>
-            <a href="sms:+17372556255" class="modern-button">Text Us</a>
+      <div class="tile">
+        <h2>Contact Support</h2>
+
+        <p>Refill Classes, Request Resources or more</p>
+          <a href="mailto:contact@academixtutors.com" class="modern-button">Email Us</a>
+          <a href="sms:+17372556255" class="modern-button">Text Us</a>
+      </div>
+        <!-- Other tiles -->
+        <div class="tile wide-tile">
+            <h2>Calendar</h2>
+         <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&showTitle=0&src=dHV0b3JpbmdieWFjYWRlbWl4QGdtYWlsLmNvbQ&color=%23039BE5" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
-    </main>
+        <div class="tile wide-tile">
+            <h2>Your Resources</h2>
+           <ul>
+<p>Nothing here yet!</p>
+</ul>
+
+            
+        </div>
+        <div class="tile wide-tile">
+            <h2>To-Do List</h2>
+            <p>Nothing to do yet!</p>
+        </div>
+
     <footer>
         <p>2024 Academix Tutoring</p>
+        <p class="hidden-text">Affordable tutoring in Austin, Texas for all ages. In-person and online tutoring services
+            for students. Tutoring for all students at budget-friendly rates.</p>
         <p>Contact Us: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
     </footer>
 </body>
-
+    <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6643f3566c2c6e37b9e7874d' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
 </html>
