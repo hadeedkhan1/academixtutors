@@ -11,50 +11,50 @@
 </head>
 
 <script>
-// Replace with your Google Sheets CSV URL
+// URL of your Google Sheets CSV
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQUSSnbTVVUxBWQijAtgRgw76yGq5PcRMgCQhk1kNw1K8TcrirNIV8EWK-yR2k4FHUVvwRa-CIDCY-l/pub?output=csv";
 
-// Function to fetch data from the Google Sheet
+// Function to fetch data from Google Sheets
 async function fetchSessionData(studentName) {
-     try {
-         const response = await fetch(sheetURL);
-         const data = await response.text();
-         
-         // Clean and split CSV into rows
-         let rows = data.trim().split("\n").map(row => row.split(","));
-         
-         console.log("CSV Rows:", rows);  // Log CSV data for debugging
-         
-         // Locate the student's row dynamically
-         let studentData = rows.find(row => row[0].toUpperCase() === studentName.toUpperCase());
-         
-         console.log("Student Data:", studentData);  // Log the found student data
-         
-         if (!studentData) {
-             document.getElementById("studentName").innerText = "Student not found!";
-             return;
-         }
+    try {
+        const response = await fetch(sheetURL);
+        const data = await response.text();
+        
+        // Log raw data to check what we get from the CSV
+        console.log("CSV Data:", data); 
+        
+        // Split data into rows
+        let rows = data.split("\n");
+        
+        // Display rows for debugging
+        console.log("Rows:", rows);
+        
+        // Search for the student row
+        for (let row of rows) {
+            let columns = row.split(","); // Split the row into columns
+            
+            // Check if the first column matches the student name (case-insensitive)
+            if (columns[0].toUpperCase().trim() === studentName.toUpperCase().trim()) {
+                // Found student, update the HTML
+                document.getElementById("studentName").innerText = studentName;
+                document.getElementById("tutorName").innerText = columns[1]; // Tutor
+                document.getElementById("program").innerText = columns[2]; // Program
+                document.getElementById("totalSessions").innerText = columns[3]; // Total Sessions
+                document.getElementById("remainingSessions").innerText = columns[4]; // Remaining Sessions
+                return;
+            }
+        }
+        
+        // If student is not found
+        document.getElementById("studentName").innerText = "Student not found!";
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
 
-         // Extract the specific data for the student
-         let tutorName = studentData[1];  // Column B (Tutor)
-         let program = studentData[2];    // Column C (Program)
-         let totalSessions = studentData[3];  // Column D (Total Sessions)
-         let remainingSessions = studentData[4];  // Column E (Remaining Sessions)
-
-         // Update HTML elements dynamically
-         document.getElementById("studentName").innerText = studentName;
-         document.getElementById("tutorName").innerText = tutorName;
-         document.getElementById("program").innerText = program;
-         document.getElementById("totalSessions").innerText = totalSessions;
-         document.getElementById("remainingSessions").innerText = remainingSessions;
-
-     } catch (error) {
-         console.error("Error fetching data:", error);
-     }
- }
 // Get the student name from the URL query parameters
 const urlParams = new URLSearchParams(window.location.search);
-const studentName = urlParams.get('student'); // E.g., ?student=KAILA
+const studentName = urlParams.get('student'); // Example: ?student=KAILA
 
 // If a student name is provided, fetch their data
 if (studentName) {
@@ -65,16 +65,6 @@ if (studentName) {
 </script>
 
 <body>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQN0T437R6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-JQN0T437R6');
-    </script>
     <header>
         <nav>
             <a href="index.html">
@@ -110,42 +100,11 @@ if (studentName) {
             <a href="mailto:contact@academixtutors.com" class="modern-button">Email Us</a>
             <a href="sms:+17372556255" class="modern-button">Text Us</a>
         </div>
-        <!-- Other tiles -->
-        <div class="tile wide-tile">
-            <h2>Calendar</h2>
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&showTitle=0&src=dHV0b3JpbmdieWFjYWRlbWl4QGdtYWlsLmNvbQ&color=%23039BE5" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-        </div>
-        <div class="tile wide-tile">
-            <h2>Your Resources</h2>
-            <ul>
-                <p>Nothing here yet!</p>
-            </ul>
-        </div>
-        <div class="tile wide-tile">
-            <h2>To-Do List</h2>
-            <p>Nothing to do yet!</p>
-        </div>
     </main>
     <footer>
         <p>2024 Academix Tutoring</p>
-        <p class="hidden-text">Affordable tutoring in Austin, Texas for all ages. In-person and online tutoring services
-            for students. Tutoring for all students at budget-friendly rates.</p>
         <p>Contact Us: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
     </footer>
 </body>
-
-<script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6643f3566c2c6e37b9e7874d' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
 
 </html>
