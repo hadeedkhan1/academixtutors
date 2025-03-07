@@ -93,7 +93,7 @@ async function fetchSheetData() {
         const rows = data.split("\n").map(row => row.split(",")); 
         
       
-        const studentData = rows[2]; // Change this index if Kaila's data is in a different row
+        const studentData = rows[2]; // Row that the clients info is on
 
         if (studentData.length > 0) {
             document.getElementById("studentName").innerText = studentData[0]; // Name
@@ -114,9 +114,23 @@ async function fetchSheetData() {
     }
 }
 
-// Call the function to fetch data when the page loads
+// Refresh on reload
 fetchSheetData();
 
     </script>
+            <script type="text/javascript">
+                //MATHWISE IMPLEMENTATION
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6643f3566c2c6e37b9e7874d' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
 </body>
 </html>
