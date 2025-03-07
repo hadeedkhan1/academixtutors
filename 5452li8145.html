@@ -109,7 +109,7 @@ async function fetchSheetData() {
         const data = await response.text();
         const rows = data.split("\n").map(row => row.split(",")); // CSV into an array
         
-        const studentData = rows[3]; // Change this index per client row
+        const studentData = rows[4]; // Change this index per client row
 
         if (studentData.length > 0) {
             document.getElementById("studentName").innerText = studentData[0]; // Name
