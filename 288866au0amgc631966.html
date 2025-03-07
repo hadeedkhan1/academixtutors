@@ -32,22 +32,23 @@
         <h1>Client Portal</h1>
     </header>
     <main class="tile-container">
-        <div class="tile">
-            <h2>Welcome, Autumn!</h2>
-            <p><strong>Tutor: Ateeb M</strong></p>
-            <p>Contact: <a href="sms:+5128049961">(512) 804-9961</a></p>
+         <div class="tile">
+            <h2>Welcome, <span id="studentName">Loading...</span>!</h2>
+            <p><strong>Tutor: <span id="tutorName">Loading...</span></strong></p>
+            <p>Contact: <a  id="tutorPhone">Loading...</a></p>
         </div>
         <div class="tile">
             <h2>Session Info</h2>
-            <p><strong>Program: 9th Grade Geometry</strong></p>
-            <p>Classes Taken: 10</p>
-            <p>Classes Remaining: 0</p>
+            <p><strong>Program: <span id="subject">Loading...</span></strong></p>
+            <p>Classes Taken: <span id="classesTaken">Loading...</span></p>
+            <p>Classes Remaining: <span id="classesRemaining">Loading...</span></p>
             <p><b>Please contact us to refill on classes.</b></p>
         </div>
         <div class="tile">
             <h2>Join Your Session</h2>
-            <p>Next Session: <strong>Jun 2 2024 4:00pm Central</strong></p>
-            <p>Location: Online</p>
+            <p>Next Session: <strong id="nextSession">Loading...</strong></p>
+            <p>Location: <span id="sessionLocation">Loading...</span></p>
+            Join Session:  <a class="yellow-email" id="joinSessionLink" href="#">Loading...</a>
         </div>
       <div class="tile">
         <h2>Contact Support</h2>
@@ -78,5 +79,44 @@
             are subject to a rare commute fee.</p>
         <p>Contact Us: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
     </footer>
+            <script type="text/javascript">
+async function fetchSheetData() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT2Zh1IQAmy2WDxyDVK4Z3SJpoIQMmOuMI_PhwsLajhZzFlgbF3N5XWCAC-PH31jwCRa5lfH1Bzce1L/pub?gid=0&single=true&output=csv"; // Your Google Sheets URL
+
+    try {
+        const response = await fetch(sheetURL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.text();
+        const rows = data.split("\n").map(row => row.split(",")); 
+        
+      
+        const studentData = rows[2]; // Change this index if Kaila's data is in a different row
+
+        if (studentData.length > 0) {
+            document.getElementById("studentName").innerText = studentData[0]; // Name
+            document.getElementById("tutorName").innerText = studentData[1]; // Tutor Name
+            document.getElementById("tutorPhone").innerText = studentData[2] || "No phone number"; // Phone
+            document.getElementById("subject").innerText = studentData[3]; // Subject
+            document.getElementById("classesTaken").innerText = studentData[4]; // Classes Taken
+            document.getElementById("classesRemaining").innerText = studentData[5]; // Classes Remaining
+            document.getElementById("nextSession").innerText = studentData[6] || "Please check with your tutor"; // Next Session Date
+            document.getElementById("sessionLocation").innerText = studentData[7] || "Not provided"; // Session Location
+            document.getElementById("joinSessionLink").href = studentData[8] || "#"; // Join Session Link
+            document.getElementById("joinSessionLink").innerText = studentData[8] ? "Join Session" : "Link not available";
+        } else {
+            console.error("No data found for the student.");
+        }
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+    }
+}
+
+// Call the function to fetch data when the page loads
+fetchSheetData();
+
+    </script>
 </body>
 </html>
