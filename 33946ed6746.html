@@ -110,7 +110,7 @@ async function fetchSheetData() {
         const rows = data.split("\n").map(row => row.split(",")); // Convert CSV into an array
         
         // Directly reference the second row (index 1 since arrays start at 0)
-        const studentData = rows[1]; // Change this index if Kaila's data is in a different row
+        const studentData = rows[3]; // Change this index per client row
 
         if (studentData.length > 0) {
             document.getElementById("studentName").innerText = studentData[0]; // Name
