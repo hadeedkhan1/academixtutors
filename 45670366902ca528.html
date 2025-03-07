@@ -18,7 +18,6 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'G-JQN0T437R6');
     </script>
     <header>
@@ -33,26 +32,25 @@
     </header>
     <main class="tile-container">
         <div class="tile">
-            <h2>Welcome, Kaila!</h2>
-            <p><strong>Tutor: Henry L</strong></p>
-            <p>Contact: <a href="sms:+17372556255">(949) 538-7325</a></p>
+            <h2>Welcome, <span id="studentName">Loading...</span>!</h2>
+            <p><strong>Tutor: <span id="tutorName">Loading...</span></strong></p>
+            <p>Contact: <a  id="tutorPhone">Loading...</a></p>
         </div>
         <div class="tile">
             <h2>Session Info</h2>
-            <p><strong>Program: 9th Grade Biology (LASA)</strong></p>
-            <p>Classes Taken: 8</p>
-            <p>Classes Remaining: 6.5</p>
+            <p><strong>Program: <span id="subject">Loading...</span></strong></p>
+            <p>Classes Taken: <span id="classesTaken">Loading...</span></p>
+            <p>Classes Remaining: <span id="classesRemaining">Loading...</span></p>
             <p><b>Please contact us to refill on classes.</b></p>
         </div>
         <div class="tile">
             <h2>Join Your Session</h2>
-            <p>Next Session: <strong>Dec 7 | 12:30 PM Central</strong></p>
-            <p>Location: Online</p>
-             Join Session:  <a class="yellow-email" href="-----">-----</a>
+            <p>Next Session: <strong id="nextSession">Loading...</strong></p>
+            <p>Location: <span id="sessionLocation">Loading...</span></p>
+            Join Session:  <a class="yellow-email" id="joinSessionLink" href="#">Loading...</a>
         </div>
       <div class="tile">
         <h2>Contact Support</h2>
-
         <p>Refill Classes, Request Resources or more</p>
           <a href="mailto:contact@academixtutors.com" class="modern-button">Email Us</a>
           <a href="sms:+17372556255" class="modern-button">Text Us</a>
@@ -67,8 +65,6 @@
            <ul>
 <p>Nothing here yet!</p>
 </ul>
-
-            
         </div>
         <div class="tile wide-tile">
             <h2>To-Do List</h2>
@@ -81,18 +77,43 @@
             for students. Tutoring for all students at budget-friendly rates.</p>
         <p>Contact Us: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
     </footer>
-</body>
+
     <script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6643f3566c2c6e37b9e7874d' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+        async function fetchSheetData() {
+            const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT2Zh1IQAmy2WDxyDVK4Z3SJpoIQMmOuMI_PhwsLajhZzFlgbF3N5XWCAC-PH31jwCRa5lfH1Bzce1L/pub?gid=0&single=true&output=csv"; // Your Google Sheets URL
+            const response = await fetch(sheetURL);
+            const data = await response.text();
+            const rows = data.split("\n").map(row => row.split(",")); // Convert CSV into an array
+
+            // Look for the student by name (e.g., Kaila)
+            const studentName = "Kaila"; // Change this to dynamically get the student name
+            let studentData = null;
+
+            for (let i = 1; i < rows.length; i++) {
+                if (rows[i][0] === studentName) {
+                    studentData = rows[i];
+                    break;
+                }
+            }
+
+            if (studentData) {
+                document.getElementById("studentName").innerText = studentData[0];
+                document.getElementById("tutorName").innerText = studentData[1];
+                document.getElementById("tutorPhone").innerText = studentData[2] || "No phone number"; // Handle missing phone number
+                document.getElementById("subject").innerText = studentData[3];
+                document.getElementById("classesTaken").innerText = studentData[4];
+                document.getElementById("classesRemaining").innerText = studentData[5];
+                document.getElementById("nextSession").innerText = studentData[6] || "Please check with your tutor";
+                document.getElementById("sessionLocation").innerText = studentData[7] || "Not provided";
+                document.getElementById("joinSessionLink").href = studentData[8] || "#";
+                document.getElementById("joinSessionLink").innerText = studentData[8] ? "Join Session" : "Link not available";
+            } else {
+                console.error("Student not found.");
+            }
+        }
+
+        fetchSheetData();
+    </script>
+
+</body>
 </html>
