@@ -79,40 +79,46 @@
     </footer>
 
     <script type="text/javascript">
-        async function fetchSheetData() {
-            const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT2Zh1IQAmy2WDxyDVK4Z3SJpoIQMmOuMI_PhwsLajhZzFlgbF3N5XWCAC-PH31jwCRa5lfH1Bzce1L/pub?gid=0&single=true&output=csv"; // Your Google Sheets URL
-            const response = await fetch(sheetURL);
-            const data = await response.text();
-            const rows = data.split("\n").map(row => row.split(",")); // Convert CSV into an array
+       async function fetchSheetData() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT2Zh1IQAmy2WDxyDVK4Z3SJpoIQMmOuMI_PhwsLajhZzFlgbF3N5XWCAC-PH31jwCRa5lfH1Bzce1L/pub?gid=0&single=true&output=csv"; // Your Google Sheets URL
+    try {
+        const response = await fetch(sheetURL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.text();
+        const rows = data.split("\n").map(row => row.split(",")); // Convert CSV into an array
 
-            // Look for the student by name (e.g., Kaila)
-            const studentName = "Kaila"; // Change this to dynamically get the student name
-            let studentData = null;
+        // Look for the student by name (e.g., Kaila)
+        const studentName = "Kaila"; // Change this to dynamically get the student name
+        let studentData = null;
 
-            for (let i = 1; i < rows.length; i++) {
-                if (rows[i][0] === studentName) {
-                    studentData = rows[i];
-                    break;
-                }
-            }
-
-            if (studentData) {
-                document.getElementById("studentName").innerText = studentData[0];
-                document.getElementById("tutorName").innerText = studentData[1];
-                document.getElementById("tutorPhone").innerText = studentData[2] || "No phone number"; // Handle missing phone number
-                document.getElementById("subject").innerText = studentData[3];
-                document.getElementById("classesTaken").innerText = studentData[4];
-                document.getElementById("classesRemaining").innerText = studentData[5];
-                document.getElementById("nextSession").innerText = studentData[6] || "Please check with your tutor";
-                document.getElementById("sessionLocation").innerText = studentData[7] || "Not provided";
-                document.getElementById("joinSessionLink").href = studentData[8] || "#";
-                document.getElementById("joinSessionLink").innerText = studentData[8] ? "Join Session" : "Link not available";
-            } else {
-                console.error("Student not found.");
+        for (let i = 1; i < rows.length; i++) {
+            if (rows[i][0] === studentName) {
+                studentData = rows[i];
+                break;
             }
         }
 
-        fetchSheetData();
+        if (studentData) {
+            document.getElementById("studentName").innerText = studentData[0];
+            document.getElementById("tutorName").innerText = studentData[1];
+            document.getElementById("tutorPhone").innerText = studentData[2] || "No phone number"; // Handle missing phone number
+            document.getElementById("subject").innerText = studentData[3];
+            document.getElementById("classesTaken").innerText = studentData[4];
+            document.getElementById("classesRemaining").innerText = studentData[5];
+            document.getElementById("nextSession").innerText = studentData[6] || "Please check with your tutor";
+            document.getElementById("sessionLocation").innerText = studentData[7] || "Not provided";
+            document.getElementById("joinSessionLink").href = studentData[8] || "#";
+            document.getElementById("joinSessionLink").innerText = studentData[8] ? "Join Session" : "Link not available";
+        } else {
+            console.error("Student not found.");
+        }
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+    }
+}
+
     </script>
 
 </body>
