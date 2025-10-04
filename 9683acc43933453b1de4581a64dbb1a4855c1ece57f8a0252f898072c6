@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal</title>
+    <link rel="stylesheet" href="styleclient.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+<body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQN0T437R6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JQN0T437R6');
+    </script>
+    <header>
+        <nav>
+            <a href="index.html">
+                <img src="logo.png" alt="Academix Logo" class="logo">
+            </a>
+            <a class="nav-button" href="index.html">Home</a>
+            <a class="nav-button" href="contact.html">Contact Us</a>
+        </nav>
+        <h1>Client Portal</h1>
+    </header>
+    <main class="tile-container">
+        <div class="tile">
+            <h2>Welcome, <span id="studentName">Loading...</span>!</h2>
+            <p><strong>Tutor: <span id="tutorName">Loading...</span></strong></p>
+            <p>Contact: <a  id="tutorPhone">Loading...</a></p>
+        </div>
+        <div class="tile">
+            <h2>Session Info</h2>
+            <p><strong>Program: <span id="subject">Loading...</span></strong></p>
+            <p>Classes Taken: <span id="classesTaken">Loading...</span></p>
+            <p>Classes Remaining: <span id="classesRemaining">Loading...</span></p>
+            <p><b>Please contact us to refill on classes.</b></p>
+        </div>
+        <div class="tile">
+            <h2>Join Your Session</h2>
+            <p>Next Session: <strong id="nextSession">Loading...</strong></p>
+            <p>Location: <span id="sessionLocation">Loading...</span></p>
+            Join Session:  <a class="yellow-email" id="joinSessionLink" href="#">Loading...</a>
+        </div>
+      <div class="tile">
+        <h2>Contact Support</h2>
+       
+        <p>Refill Classes, Request Resources or more</p>
+          <a href="mailto:contact@academixtutors.com" class="modern-button">Email Us</a>
+          <a href="sms:+17372556255" class="modern-button">Text Us</a>
+      </div>
+        <!-- Other tiles -->
+        <div class="tile wide-tile">
+            <h2>Calendar</h2>
+            <iframe src="https://calendar.google.com/calendar/embed?src=9683acc43933453b1de4581a64dbb1a4855c1ece57f8a0252f898072c6611793@group.calendar.google.com&ctz=America%2FChicago"
+                style="border: 0; width: 100%; height: 600px;" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="tile wide-tile">
+            <h2>Your Resources</h2>
+            <p>None Yet! Contact us to get started with your first request</p>
+        </div>
+        <div class="tile wide-tile">
+            <h2>To-Do List</h2>
+            <p>Nothing to do yet!</p>
+        </div>
+  
+    <footer>
+        <p>2024 Academix Tutoring</p>
+        <p class="hidden-text">Affordable tutoring in Austin, Texas for all ages. In-person and online tutoring services
+            for students. Tutoring for all students at budget-friendly rates.</p>
+        <p>Please note: In-person classes are local to Austin, Texas only. Online classes are global. In-Person classes
+            are subject to a rare commute fee.</p>
+        <p>Contact Us: <a class="yellow-email" href="mailto:contact@academixtutors.com">contact@academixtutors.com</a></p>
+    </footer>
+</body>
+    <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6643f3566c2c6e37b9e7874d' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+        <script type="text/javascript">
+async function fetchSheetData() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT2Zh1IQAmy2WDxyDVK4Z3SJpoIQMmOuMI_PhwsLajhZzFlgbF3N5XWCAC-PH31jwCRa5lfH1Bzce1L/pub?gid=0&single=true&output=csv"; // Your Google Sheets URL
+
+    try {
+        const response = await fetch(sheetURL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.text();
+        const rows = data.split("\n").map(row => row.split(",")); // Convert CSV into an array
+        
+        // Directly reference the second row (index 1 since arrays start at 0)
+        const studentData = rows[6]; // Change this index per client row
+
+        if (studentData.length > 0) {
+            document.getElementById("studentName").innerText = studentData[0]; // Name
+            document.getElementById("tutorName").innerText = studentData[1]; // Tutor Name
+            document.getElementById("tutorPhone").innerText = studentData[2] || "No phone number"; // Phone
+            document.getElementById("subject").innerText = studentData[3]; // Subject
+            document.getElementById("classesTaken").innerText = studentData[4]; // Classes Taken
+            document.getElementById("classesRemaining").innerText = studentData[5]; // Classes Remaining
+            document.getElementById("nextSession").innerText = studentData[6] || "Please check with your tutor"; // Next Session Date
+            document.getElementById("sessionLocation").innerText = studentData[7] || "Not provided"; // Session Location
+            document.getElementById("joinSessionLink").href = studentData[8] || "#"; // Join Session Link
+            document.getElementById("joinSessionLink").innerText = studentData[8] ? "Join Session" : "Link not available";
+        } else {
+            console.error("No data found for the student.");
+        }
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+    }
+}
+
+// Call the function to fetch data when the page loads
+fetchSheetData();
+
+    </script>
+</html>
