@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     var password = document.getElementById("password").value;
 
     if (password === "edwin34") {
-        window.location.href = "33946ed6746.html"; // Redirect
+        window.location.href = "33946ed6746.html"; // Redirect 
     }
     else if (password === "lila357") {
         window.location.href = "5452li8145.html"; // Redirect
