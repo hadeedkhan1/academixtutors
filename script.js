@@ -27,6 +27,9 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     else if (password === "claire021") {
         window.location.href = "chl9683acc43933453b1de4581a64dbb1a4855c1ece57f8aclaire0252f898072c6.html"; // Redirect
     }
+    else if (password === "benj3472") {
+        window.location.href = "bsubeqmt4n5iptlocis_50mteqt2evnijdslkfdsk.html"; // Redirect
+    }
     else {
         document.getElementById("message").innerHTML = "Incorrect password. Please try again.";
     }
